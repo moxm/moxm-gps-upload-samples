@@ -54,13 +54,13 @@ public class UploadGpsService extends Service implements Runnable {
 
 			Log.d(TAG, "++++++++Run");
 			List<Position> datas = mGpsManager.findNotUploadDatas();
-			if (!datas.isEmpty()) {
+//			if (!datas.isEmpty()) {
 
 				Log.d(TAG, "++++++++data is not Empty, size: " + datas.size());
 				StringRequest request = new StringRequest(Method.GET, "http://api.map.baidu.com/telematics/v3/weather?location=%E7%BB%A5%E5%BE%B7&output=json&ak=11ffd27d38deda622f51c9d314d46b17", new SuccessListener<String>(datas), errorListener);
 
 				mQueue.add(request);
-			}
+//			}
 
 			//10分钟提交一次
 			Thread.currentThread();

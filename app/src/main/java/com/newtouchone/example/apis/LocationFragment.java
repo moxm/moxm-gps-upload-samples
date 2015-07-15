@@ -15,6 +15,9 @@ import com.baidu.location.LocationClientOption;
 import com.newtouchone.example.apis.domain.Position;
 import com.newtouchone.example.apis.manager.GpsManager;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 /**
  * 百度定位
@@ -107,7 +110,12 @@ public class LocationFragment extends Fragment {
                 time = currentTime;
                 Position data = new Position();
                 data.setAddrStr(location.getAddrStr());
-                data.setTime(location.getTime());
+
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+                String time = format.format(new Date(System.currentTimeMillis()));
+
+                data.setTime("百度：" + location.getTime() + "\n本机：" + time);
                 mGpsManager.insertPosition(data);
             }
 
