@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GPS上传测试</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_info">Info</string>
+    <string name="action_clear">Clear</string>
+</resources>
