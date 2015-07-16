@@ -5,14 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.newtouchone.example.apis.service.LocationService;
 import com.newtouchone.example.apis.service.UploadGpsService;
 
 public class BootBroadcastReceiver extends BroadcastReceiver {
     
 	private static final String TAG = BootBroadcastReceiver.class.getSimpleName();
 	
-	Intent mServer;
-	
+	Intent mLocationServer;
+	Intent mUploadServer;
+
     @Override    
     public void onReceive(Context context, Intent intent) {
     	Log.d(TAG, "========================开机自动启动===============================");
@@ -22,10 +24,12 @@ public class BootBroadcastReceiver extends BroadcastReceiver {
     }
     
     private void init(Context context){
-    	mServer = new Intent(context, UploadGpsService.class);
+        mUploadServer = new Intent(context, UploadGpsService.class);
+        mLocationServer = new Intent(context, LocationService.class);
     }
     private void start(Context context){
-    	context.startService(mServer);
+    	context.startService(mLocationServer);
+    	context.startService(mUploadServer);
     }
     
 }

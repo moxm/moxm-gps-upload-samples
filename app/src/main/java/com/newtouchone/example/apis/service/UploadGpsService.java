@@ -87,23 +87,24 @@ public class UploadGpsService extends Service implements Runnable {
 			String time = format.format(new Date(System.currentTimeMillis()));
 
 			data.setTime(time);
+			data.setGpsText("同步成功");
 			data.setCount(mDatas.size());
 			mGpsManager.insertUpload(data);
 		}
 	}
 
-	private Response.Listener<String> listener = new Response.Listener<String>() {
-
-		@Override
-		public void onResponse(String s) {
-
-		}
-	};
 	private Response.ErrorListener errorListener = new Response.ErrorListener() {
 		@Override
 		public void onErrorResponse(VolleyError volleyError) {
 			Log.d(TAG, "++++++++ErrorListener");
+			Upload data = new Upload();
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
+			String time = format.format(new Date(System.currentTimeMillis()));
+
+			data.setTime(time);
+			data.setGpsText("同步失败");
+			mGpsManager.insertUpload(data);
 		}
 	};
 

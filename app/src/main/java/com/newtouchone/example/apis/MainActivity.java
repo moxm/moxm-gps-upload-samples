@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.newtouchone.example.apis.service.LocationService;
 import com.newtouchone.example.apis.service.UploadGpsService;
 
 
@@ -16,9 +17,12 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_main);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new LocationFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new MainFragment()).commit();
 
-        Intent intent = new Intent(this, UploadGpsService.class);
+        Intent intent = new Intent(this, LocationService.class);
+        startService(intent);
+
+        intent = new Intent(this, UploadGpsService.class);
         startService(intent);
     }
 

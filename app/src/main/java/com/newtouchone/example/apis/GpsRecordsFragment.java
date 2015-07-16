@@ -84,7 +84,7 @@ public class GpsRecordsFragment extends Fragment {
 		@Override
 		public void onBindViewHolder(SampleHolder holder, int pos) {
 			Position data = mSampleList.get(pos);
-			holder.bindData(data);
+			holder.bindData(data, pos);
 		}
 
 		@Override
@@ -111,7 +111,7 @@ public class GpsRecordsFragment extends Fragment {
 			mTextView3 = (TextView) itemView.findViewById(R.id.text3);
 		}
 
-		public void bindData(Position data) {
+		public void bindData(Position data, int position) {
 			mData = data;
 
 //			mRootView.setBackgroundResource(mData.get(KEY_COLOR));
@@ -119,6 +119,19 @@ public class GpsRecordsFragment extends Fragment {
 			mTextView1.setText(mData.getTime());
 			mTextView2.setText(mData.getAddrStr());
 			mTextView3.setText(mData.getUploaded() ? "已上传" : "未上传");
+
+			int index = position % 3;
+			switch (index) {
+				case 0:
+					mRootView.setBackgroundResource(R.color.saffron);
+					break;
+				case 1:
+					mRootView.setBackgroundResource(R.color.eggplant);
+					break;
+				case 2:
+					mRootView.setBackgroundResource(R.color.sienna);
+					break;
+			}
 		}
 	}
 }

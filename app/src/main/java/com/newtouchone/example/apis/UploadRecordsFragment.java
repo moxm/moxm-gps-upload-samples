@@ -84,7 +84,7 @@ public class UploadRecordsFragment extends Fragment {
 		@Override
 		public void onBindViewHolder(SampleHolder holder, int pos) {
 			Upload data = mSampleList.get(pos);
-			holder.bindData(data);
+			holder.bindData(data, pos);
 		}
 
 		@Override
@@ -98,6 +98,7 @@ public class UploadRecordsFragment extends Fragment {
 		private View mRootView;
 		private TextView mTextView1;
 		private TextView mTextView2;
+		private TextView mTextView3;
 
 		private Upload mData;
 
@@ -107,15 +108,30 @@ public class UploadRecordsFragment extends Fragment {
 			mRootView = itemView;
 			mTextView1 = (TextView) itemView.findViewById(R.id.text1);
 			mTextView2 = (TextView) itemView.findViewById(R.id.text2);
+			mTextView3 = (TextView) itemView.findViewById(R.id.text3);
 		}
 
-		public void bindData(Upload data) {
+		public void bindData(Upload data, int position) {
 			mData = data;
 
 //			mRootView.setBackgroundResource(mData.get(KEY_COLOR));
 
 			mTextView1.setText(mData.getTime());
-			mTextView2.setText("提交记录数：" + mData.getCount());
+			mTextView2.setText(mData.getGpsText());
+			mTextView3.setText("记录数：" + mData.getCount());
+
+			int index = position % 3;
+			switch (index) {
+				case 0:
+					mRootView.setBackgroundResource(R.color.saffron);
+					break;
+				case 1:
+					mRootView.setBackgroundResource(R.color.eggplant);
+					break;
+				case 2:
+					mRootView.setBackgroundResource(R.color.sienna);
+					break;
+			}
 		}
 	}
 }

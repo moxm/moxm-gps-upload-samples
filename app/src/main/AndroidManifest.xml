@@ -63,6 +63,11 @@
                 <action android:name="cn.betatown.mobile.SERVER" />
                 <category android:name="android.intent.category.default" />
             </intent-filter>
+        </service><service android:name=".service.LocationService">
+            <intent-filter>
+                <action android:name="cn.betatown.mobile.SERVER" />
+                <category android:name="android.intent.category.default" />
+            </intent-filter>
         </service>
 
         <activity
