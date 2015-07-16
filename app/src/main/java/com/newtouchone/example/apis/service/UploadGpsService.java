@@ -41,6 +41,12 @@ public class UploadGpsService extends Service implements Runnable {
 	}
 
 	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) {
+
+		return super.onStartCommand(intent, START_REDELIVER_INTENT, startId);
+	}
+
+	@Override
 	public void onDestroy() {
 		Log.d(TAG, "========================onDestroy");
 		super.onDestroy();

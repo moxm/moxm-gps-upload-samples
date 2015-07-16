@@ -56,6 +56,11 @@ public class LocationService extends Service {
 		mLocationClient.start();
 	}
 
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) {
+
+		return super.onStartCommand(intent, START_REDELIVER_INTENT, startId);
+	}
 
 	class MyLocationListener implements BDLocationListener {
 

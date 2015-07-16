@@ -52,19 +52,20 @@
 
         <!-- receiver -->
         <receiver android:enabled="true" android:name=".receiver.BootBroadcastReceiver" android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
-            <intent-filter>
+            <intent-filter android:priority="1000">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
         <!-- service -->
         <service android:name=".service.UploadGpsService">
-            <intent-filter>
+            <intent-filter android:priority="1000">
                 <action android:name="cn.betatown.mobile.SERVER" />
                 <category android:name="android.intent.category.default" />
             </intent-filter>
-        </service><service android:name=".service.LocationService">
-            <intent-filter>
+        </service>
+        <service android:name=".service.LocationService">
+            <intent-filter android:priority="1000">
                 <action android:name="cn.betatown.mobile.SERVER" />
                 <category android:name="android.intent.category.default" />
             </intent-filter>
